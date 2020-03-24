@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "functions-framework --target=Register"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "puppeteer": "^2.1.1"
+    "puppeteer": "^2.1.1",
+    "@google-cloud/functions-framework": "^1.5.0"
   }
 }

@@ -1,11 +1,15 @@
 const puppeteer = require('puppeteer');
 const config = require("../credentials");
 
-(async () => {
+let browserPromise = puppeteer.launch(
+    {
+        args: ['--no-sandbox']
+    });
 
+async function Register() {
 
-    let browser = await puppeteer.launch({headless: false});
-    let page = await browser.newPage();
+    const browser = await browserPromise;
+    const page = await browser.newPage();
     await page.goto('https://horizon.mcgill.ca/pban1/twbkwbis.P_WWWLogin', {waitUntil: 'networkidle0'});
 
     //logs in
@@ -36,4 +40,6 @@ const config = require("../credentials");
         await page.type(inputID, crn, {delay: 30})
     }
     await page.waitForXPath("/html/body/div[3]/form/input[19]", {waitUntil: 'networkidle0'}).then(selector => selector.click());
-})();
+}
+
+module.exports.Register = Register;
